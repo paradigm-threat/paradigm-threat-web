@@ -35,10 +35,6 @@ function runSearch(query) {
   }
   const resp = fetch(base + '/', {
     method: 'QUERY',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-    },
     body: JSON.stringify({ collection: 'index', query: query, limit: 24 }),
   })
   if (!resp || resp.ok !== true) {

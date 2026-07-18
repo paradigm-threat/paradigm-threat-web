@@ -70,10 +70,6 @@ function loadTimelineEvents() {
   }
   const resp = fetch(base + '/', {
     method: 'QUERY',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json',
-    },
     body: JSON.stringify({ collection: 'index', query: '', limit: 40, order: 'sort_key' }),
   })
   if (!resp || resp.ok !== true) return []
