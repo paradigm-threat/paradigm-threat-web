@@ -2,6 +2,7 @@ import React from 'react'
 import { MarkdownRenderer } from '@clevertree/markdown'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
 import { getTimelineBaseUrl } from 'hooks/client/config.jsx'
+import { parseJson, queryIndexBody } from 'hooks/client/jsonUtil.jsx'
 
 function str(v) {
   if (v === null) return ''
@@ -16,16 +17,26 @@ function str(v) {
 
 function eventTitle(row) {
   if (!row) return 'Event'
-  if (row.title && typeof row.title === 'string') return row.title
-  if (row.name && typeof row.name === 'string') return row.name
-  if (row.id && typeof row.id === 'string') return row.id
+  try {
+    if (row.title && typeof row.title === 'string') return row.title
+  } catch (e) {}
+  try {
+    if (row.name && typeof row.name === 'string') return row.name
+  } catch (e) {}
+  try {
+    if (row.id && typeof row.id === 'string') return row.id
+  } catch (e) {}
   return 'Event'
 }
 
 function eventMeta(row) {
   if (!row) return ''
-  if (row.md_path && typeof row.md_path === 'string') return row.md_path
-  if (row.type && typeof row.type === 'string') return row.type
+  try {
+    if (row.md_path && typeof row.md_path === 'string') return row.md_path
+  } catch (e) {}
+  try {
+    if (row.type && typeof row.type === 'string') return row.type
+  } catch (e) {}
   return ''
 }
 
@@ -70,17 +81,13 @@ function loadTimelineEvents() {
   }
   const resp = fetch(base + '/', {
     method: 'QUERY',
-    body: JSON.stringify({ collection: 'index', query: '', limit: 40, order: 'sort_key' }),
+    body: queryIndexBody('', 40, 'sort_key'),
   })
   if (!resp || resp.ok !== true) return []
   const text = resp.text ? resp.text : ''
   if (text.length === 0) return []
-  try {
-    const data = JSON.parse(text)
-    if (data && data.results) return flattenEvents(data.results)
-  } catch (e) {
-    return []
-  }
+  const data = parseJson(text)
+  if (data && data.results) return flattenEvents(data.results)
   return []
 }
 

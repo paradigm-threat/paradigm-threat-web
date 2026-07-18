@@ -31,8 +31,12 @@ function normalizeRoute(raw) {
 }
 
 function initialRoute() {
-  if (manifest.relayInitialPath && typeof manifest.relayInitialPath === 'string') {
-    return normalizeRoute(manifest.relayInitialPath)
+  try {
+    if (manifest.relayInitialPath && typeof manifest.relayInitialPath === 'string') {
+      return normalizeRoute(manifest.relayInitialPath)
+    }
+  } catch (e) {
+    return '/'
   }
   return '/'
 }

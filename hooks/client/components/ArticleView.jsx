@@ -85,8 +85,11 @@ function parentDir(relPath, slash) {
 }
 
 function filesOrigin() {
-  if (manifest.relayFilesBaseUrl && typeof manifest.relayFilesBaseUrl === 'string') {
-    return manifest.relayFilesBaseUrl
+  try {
+    const u = manifest.relayFilesBaseUrl
+    if (u && typeof u === 'string' && u.length > 0) return u
+  } catch (e) {
+    /* optional manifest key — CleverScript throws if missing */
   }
   return getFilesBaseUrl()
 }
@@ -108,7 +111,12 @@ export default function ArticleView(props) {
   } catch (e) {
     currentPath = '/' + initial
   }
-  const slash = manifest.relayPathSlash ? manifest.relayPathSlash : '/'
+  let slash = '/'
+  try {
+    if (manifest.relayPathSlash) slash = manifest.relayPathSlash
+  } catch (e) {
+    slash = '/'
+  }
 
   function navigateFile(to) {
     setRoutePath(normalizeRelPath(to))

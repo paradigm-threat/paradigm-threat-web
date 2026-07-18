@@ -2,6 +2,7 @@
   "hooks": [
     { "path": "hooks/client/config.jsx", "name": "config" },
     { "path": "hooks/client/propOr.jsx", "name": "propOr" },
+    { "path": "hooks/client/jsonUtil.jsx", "name": "jsonUtil" },
     { "path": "hooks/client/components/Icons.jsx", "name": "Icons" },
     { "path": "hooks/client/components/ThemeToggle.jsx", "name": "ThemeToggle" },
     { "path": "hooks/client/components/Nav.jsx", "name": "Nav" },

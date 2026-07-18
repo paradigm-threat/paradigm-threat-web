@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
 import { IconSearch } from 'hooks/client/components/Icons.jsx'
 import { getFilesBaseUrl } from 'hooks/client/config.jsx'
+import { parseJson, queryIndexBody } from 'hooks/client/jsonUtil.jsx'
 
 function str(v) {
   if (v === null) return ''
@@ -35,7 +36,7 @@ function runSearch(query) {
   }
   const resp = fetch(base + '/', {
     method: 'QUERY',
-    body: JSON.stringify({ collection: 'index', query: query, limit: 24 }),
+    body: queryIndexBody(query, 24, ''),
   })
   if (!resp || resp.ok !== true) {
     let st = 0
@@ -44,15 +45,11 @@ function runSearch(query) {
   }
   let text = resp.text ? resp.text : ''
   if (text.length === 0) return { error: 'Empty search response', rows: [] }
-  try {
-    const data = JSON.parse(text)
-    if (data && data.results && data.results.length >= 0) {
-      return { error: '', rows: data.results }
-    }
-    return { error: 'Unexpected search envelope', rows: [] }
-  } catch (e) {
-    return { error: 'Could not parse search response', rows: [] }
+  const data = parseJson(text)
+  if (data && data.results && data.results.length >= 0) {
+    return { error: '', rows: data.results }
   }
+  return { error: 'Could not parse search response', rows: [] }
 }
 
 function ResultItem(props) {
