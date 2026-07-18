@@ -29,10 +29,6 @@ export default function Nav(props) {
     return currentPath === href
   }
 
-  function onMenuClick() {
-    setOpen(!isOpen)
-  }
-
   return (
     <header className="pt-site-nav" data-site-navbar="true">
       <div className="pt-nav-inner">
@@ -55,7 +51,9 @@ export default function Nav(props) {
             type="button"
             className="pt-icon-btn pt-nav-menu-btn md:pt-nav-menu-btn-md"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            onClick={onMenuClick}
+            onClick={() => {
+              setOpen(!isOpen)
+            }}
           >
             {isOpen ? <IconClose /> : <IconMenu />}
           </button>

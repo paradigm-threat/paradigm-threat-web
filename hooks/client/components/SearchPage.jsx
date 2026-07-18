@@ -125,9 +125,19 @@ export default function SearchPage(props) {
               type="search"
               value={query}
               placeholder="Search articles and files…"
-              onChange={onQueryChange}
+              onChange={(e) => {
+                if (e && e.target && typeof e.target.value === 'string') {
+                  setQuery(e.target.value)
+                }
+              }}
             />
-            <button type="button" className="pt-btn pt-btn-primary" onClick={doSearch}>
+            <button
+              type="button"
+              className="pt-btn pt-btn-primary"
+              onClick={() => {
+                doSearch()
+              }}
+            >
               <IconSearch />
               <span>Search</span>
             </button>

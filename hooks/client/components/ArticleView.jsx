@@ -113,14 +113,6 @@ export default function ArticleView(props) {
     navigateFile(resolved)
   }
 
-  function onUpClick() {
-    navigateFile(parentDir(routePath, slash))
-  }
-
-  function onHomeClick() {
-    navigateFile('README.md')
-  }
-
   let pathPart = normalizeRelPath(routePath)
   let markdownContent = ''
   let errMsg = ''
@@ -150,15 +142,35 @@ export default function ArticleView(props) {
         <div className="pt-article-toolbar">
           <span className="pt-muted">File:</span>
           <span className="pt-article-path">{pathPart}</span>
-          <button type="button" className="pt-btn" onClick={onUpClick}>
+          <button
+            type="button"
+            className="pt-btn"
+            onClick={() => {
+              navigateFile(parentDir(routePath, slash))
+            }}
+          >
             Up
           </button>
-          <button type="button" className="pt-btn" onClick={onHomeClick}>
+          <button
+            type="button"
+            className="pt-btn"
+            onClick={() => {
+              navigateFile('README.md')
+            }}
+          >
             Home
           </button>
         </div>
         <div className="pt-article-body">
-          <MarkdownRenderer content={body} navigate={navigateFile} anchorOnClick={onMdLinkClick} />
+          <MarkdownRenderer
+            content={body}
+            navigate={(to) => {
+              navigateFile(to)
+            }}
+            anchorOnClick={(href) => {
+              onMdLinkClick(href)
+            }}
+          />
         </div>
       </main>
     </SiteChrome>

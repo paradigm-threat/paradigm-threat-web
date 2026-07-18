@@ -20,17 +20,12 @@ function resolveTheme() {
 
 /**
  * Theme toggle via relay-runtime session YAML (`theme.yaml` `current_theme`).
- * Uses `@clevertree/style-internal` setCurrentTheme / getCurrentTheme (html.light|dark sync).
+ * CleverScript SSR requires inline arrow onClick (named handler refs break IR).
  */
 export default function ThemeToggle() {
   const live = isClientLive() === true
   const resolved = resolveTheme()
   const next = resolved === 'dark' ? 'light' : 'dark'
-
-  function onToggle() {
-    if (!live) return
-    setCurrentTheme(next)
-  }
 
   return (
     <button
@@ -40,7 +35,10 @@ export default function ThemeToggle() {
       title={live ? 'Toggle theme' : 'Theme toggle available after page loads'}
       disabled={!live}
       dataTheme={next}
-      onClick={onToggle}
+      onClick={() => {
+        if (!live) return
+        setCurrentTheme(next)
+      }}
     >
       {resolved === 'dark' ? <IconSun /> : <IconMoon />}
     </button>
