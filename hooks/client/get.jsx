@@ -1,6 +1,7 @@
 /**
  * Paradigm Threat web shell — client GET hook with path-based routing.
  * CleverScript: no global String() — coerce with '' + value or typeof checks.
+ * Do not reference undeclared host globals (e.g. navigate) — that breaks SSR IR.
  */
 import React, { useState } from 'react'
 import StyleContext from '@clevertree/style'
@@ -36,13 +37,6 @@ function initialRoute() {
   return '/'
 }
 
-function isArticleRoute(route) {
-  if (route === '/') return false
-  if (route === '/search') return false
-  if (route === '/timeline') return false
-  return true
-}
-
 function articleFilePath(route) {
   let t = normalizeRoute(route)
   if (t.charAt(0) === '/') t = t.slice(1)
@@ -55,33 +49,25 @@ export default function ParadigmThreatWebGet() {
   const route = routeState[0]
   const setRoute = routeState[1]
 
-  function go(to) {
-    const next = normalizeRoute(to)
-    setRoute(next)
-    try {
-      if (typeof navigate === 'function') navigate(next)
-    } catch (e) {
-      /* host navigate optional */
-    }
+  function routeTo(to) {
+    setRoute(normalizeRoute(to))
   }
 
   let page = null
   if (route === '/' || route === '/index.md') {
-    page = <Home currentPath={route} onNavigate={go} />
+    page = <Home currentPath={route} onNavigate={routeTo} />
   } else if (route === '/search') {
-    page = <SearchPage currentPath={route} onNavigate={go} />
+    page = <SearchPage currentPath={route} onNavigate={routeTo} />
   } else if (route === '/timeline') {
-    page = <TimelinePage currentPath={route} onNavigate={go} />
-  } else if (isArticleRoute(route)) {
+    page = <TimelinePage currentPath={route} onNavigate={routeTo} />
+  } else {
     page = (
       <ArticleView
         currentPath={route}
         filePath={articleFilePath(route)}
-        onNavigate={go}
+        onNavigate={routeTo}
       />
     )
-  } else {
-    page = <Home currentPath="/" onNavigate={go} />
   }
 
   return (

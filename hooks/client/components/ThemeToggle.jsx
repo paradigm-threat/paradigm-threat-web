@@ -27,6 +27,11 @@ export default function ThemeToggle() {
   const resolved = resolveTheme()
   const next = resolved === 'dark' ? 'light' : 'dark'
 
+  function onToggle() {
+    if (!live) return
+    setCurrentTheme(next)
+  }
+
   return (
     <button
       type="button"
@@ -35,10 +40,7 @@ export default function ThemeToggle() {
       title={live ? 'Toggle theme' : 'Theme toggle available after page loads'}
       disabled={!live}
       dataTheme={next}
-      onClick={() => {
-        if (!live) return
-        setCurrentTheme(next)
-      }}
+      onClick={onToggle}
     >
       {resolved === 'dark' ? <IconSun /> : <IconMoon />}
     </button>

@@ -59,6 +59,24 @@ function runSearch(query) {
   }
 }
 
+function ResultItem(props) {
+  const row = props.row
+  const onNavigate = props.onNavigate
+  const path = rowPath(row)
+  const href = path.length > 0 ? '/' + path : '/README.md'
+  function onClick() {
+    if (onNavigate) onNavigate(href)
+  }
+  return (
+    <li className="pt-result-item">
+      <a href={href} className="pt-result-link" onClick={onClick}>
+        <span className="pt-result-title">{rowTitle(row)}</span>
+        {path.length > 0 ? <span className="pt-muted pt-result-path">{path}</span> : null}
+      </a>
+    </li>
+  )
+}
+
 export default function SearchPage(props) {
   const currentPath = props.currentPath || '/search'
   const onNavigate = props.onNavigate
@@ -82,6 +100,20 @@ export default function SearchPage(props) {
     setResult(runSearch(q))
   }
 
+  function onQueryChange(e) {
+    if (e && e.target && typeof e.target.value === 'string') {
+      setQuery(e.target.value)
+    }
+  }
+
+  const rows = result.rows
+  const items = []
+  if (rows && rows.length > 0) {
+    for (let i = 0; i < rows.length; i++) {
+      items.push(<ResultItem key={'r-' + i} row={rows[i]} onNavigate={onNavigate} />)
+    }
+  }
+
   return (
     <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
       <main className="pt-page" id="pt-search">
@@ -98,11 +130,7 @@ export default function SearchPage(props) {
               type="search"
               value={query}
               placeholder="Search articles and files…"
-              onChange={(e) => {
-                if (e && e.target && typeof e.target.value === 'string') {
-                  setQuery(e.target.value)
-                }
-              }}
+              onChange={onQueryChange}
             />
             <button type="button" className="pt-btn pt-btn-primary" onClick={doSearch}>
               <IconSearch />
@@ -116,27 +144,7 @@ export default function SearchPage(props) {
           {submittedQuery.length > 0 && !result.error ? (
             <p className="pt-muted">{result.rows.length} results for "{submittedQuery}"</p>
           ) : null}
-          <ul className="pt-result-list">
-            {result.rows.map((row, idx) => {
-              const path = rowPath(row)
-              const href = path.length > 0 ? '/' + path : '/README.md'
-              const key = path.length > 0 ? path : 'row-' + idx
-              return (
-                <li key={key} className="pt-result-item">
-                  <a
-                    href={href}
-                    className="pt-result-link"
-                    onClick={() => {
-                      if (onNavigate) onNavigate(href)
-                    }}
-                  >
-                    <span className="pt-result-title">{rowTitle(row)}</span>
-                    {path.length > 0 ? <span className="pt-muted pt-result-path">{path}</span> : null}
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
+          <ul className="pt-result-list">{items}</ul>
         </div>
       </main>
     </SiteChrome>

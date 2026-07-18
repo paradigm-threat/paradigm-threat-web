@@ -9,14 +9,11 @@ function NavLink(props) {
   const active = props.active
   const onNavigate = props.onNavigate
   const className = active ? 'pt-nav-link pt-nav-link-active' : 'pt-nav-link'
+  function onClick() {
+    if (onNavigate) onNavigate(href)
+  }
   return (
-    <a
-      href={href}
-      className={className}
-      onClick={() => {
-        if (onNavigate) onNavigate(href)
-      }}
-    >
+    <a href={href} className={className} onClick={onClick}>
       {icon}
       <span>{label}</span>
     </a>
@@ -30,7 +27,7 @@ export default function Nav(props) {
   const isOpen = menu[0]
   const setOpen = menu[1]
 
-  function go(href) {
+  function routeTo(href) {
     setOpen(false)
     if (onNavigate) onNavigate(href)
   }
@@ -42,35 +39,26 @@ export default function Nav(props) {
     return currentPath === href
   }
 
-  const links = [
-    { href: '/', label: 'Home', icon: <IconHome /> },
-    { href: '/search', label: 'Search', icon: <IconSearch /> },
-    { href: '/timeline', label: 'Timeline', icon: <IconClock /> },
-    { href: '/README.md', label: 'Files', icon: <IconBook /> },
-  ]
+  function onBrandClick() {
+    routeTo('/')
+  }
+
+  function onMenuClick() {
+    setOpen(!isOpen)
+  }
 
   return (
     <header className="pt-site-nav" data-site-navbar="true">
       <div className="pt-nav-inner">
         <div className="pt-nav-brand-row">
-          <a
-            href="/"
-            className="pt-brand"
-            onClick={() => go('/')}
-          >
+          <a href="/" className="pt-brand" onClick={onBrandClick}>
             Paradigm Threat
           </a>
           <nav className="pt-nav-desktop md:pt-nav-desktop-md">
-            {links.map((link) => (
-              <NavLink
-                key={link.href}
-                href={link.href}
-                label={link.label}
-                icon={link.icon}
-                active={isActive(link.href)}
-                onNavigate={go}
-              />
-            ))}
+            <NavLink href="/" label="Home" icon={<IconHome />} active={isActive('/')} onNavigate={routeTo} />
+            <NavLink href="/search" label="Search" icon={<IconSearch />} active={isActive('/search')} onNavigate={routeTo} />
+            <NavLink href="/timeline" label="Timeline" icon={<IconClock />} active={isActive('/timeline')} onNavigate={routeTo} />
+            <NavLink href="/README.md" label="Files" icon={<IconBook />} active={isActive('/README.md')} onNavigate={routeTo} />
           </nav>
         </div>
         <div className="pt-nav-actions">
@@ -81,7 +69,7 @@ export default function Nav(props) {
             type="button"
             className="pt-icon-btn pt-nav-menu-btn md:pt-nav-menu-btn-md"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            onClick={() => setOpen(!isOpen)}
+            onClick={onMenuClick}
           >
             {isOpen ? <IconClose /> : <IconMenu />}
           </button>
@@ -94,16 +82,10 @@ export default function Nav(props) {
             <ThemeToggle />
           </div>
           <nav className="pt-nav-mobile-links">
-            {links.map((link) => (
-              <NavLink
-                key={'m-' + link.href}
-                href={link.href}
-                label={link.label}
-                icon={link.icon}
-                active={isActive(link.href)}
-                onNavigate={go}
-              />
-            ))}
+            <NavLink href="/" label="Home" icon={<IconHome />} active={isActive('/')} onNavigate={routeTo} />
+            <NavLink href="/search" label="Search" icon={<IconSearch />} active={isActive('/search')} onNavigate={routeTo} />
+            <NavLink href="/timeline" label="Timeline" icon={<IconClock />} active={isActive('/timeline')} onNavigate={routeTo} />
+            <NavLink href="/README.md" label="Files" icon={<IconBook />} active={isActive('/README.md')} onNavigate={routeTo} />
           </nav>
         </div>
       ) : null}

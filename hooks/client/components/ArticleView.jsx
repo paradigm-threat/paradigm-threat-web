@@ -136,16 +136,24 @@ export default function ArticleView(props) {
 
   const body = errMsg ? '# Error\n\n' + errMsg : markdownContent
 
+  function onUpClick() {
+    navigateFile(parentDir(routePath, slash))
+  }
+
+  function onHomeClick() {
+    navigateFile('README.md')
+  }
+
   return (
     <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
       <main className="pt-page pt-article-page">
         <div className="pt-article-toolbar">
           <span className="pt-muted">File:</span>
           <span className="pt-article-path">{pathPart}</span>
-          <button type="button" className="pt-btn" onClick={() => navigateFile(parentDir(routePath, slash))}>
+          <button type="button" className="pt-btn" onClick={onUpClick}>
             Up
           </button>
-          <button type="button" className="pt-btn" onClick={() => navigateFile('README.md')}>
+          <button type="button" className="pt-btn" onClick={onHomeClick}>
             Home
           </button>
         </div>

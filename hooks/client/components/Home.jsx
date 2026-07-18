@@ -7,14 +7,11 @@ function Chip(props) {
   const label = props.label
   const icon = props.icon
   const onNavigate = props.onNavigate
+  function onClick() {
+    if (onNavigate) onNavigate(href)
+  }
   return (
-    <a
-      href={href}
-      className="pt-chip"
-      onClick={() => {
-        if (onNavigate) onNavigate(href)
-      }}
-    >
+    <a href={href} className="pt-chip" onClick={onClick}>
       {icon}
       <span>{label}</span>
     </a>

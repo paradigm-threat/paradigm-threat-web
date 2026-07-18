@@ -88,11 +88,27 @@ function loadTimelineEvents() {
   return []
 }
 
+function EventItem(props) {
+  const row = props.row
+  const title = eventTitle(row)
+  const meta = eventMeta(row)
+  return (
+    <li className="pt-event-item">
+      <span className="pt-event-title">{title}</span>
+      {meta.length > 0 ? <span className="pt-muted pt-event-meta">{meta}</span> : null}
+    </li>
+  )
+}
+
 export default function TimelinePage(props) {
   const currentPath = props.currentPath || '/timeline'
   const onNavigate = props.onNavigate
   const intro = loadTimelineIntro()
   const events = loadTimelineEvents()
+  const items = []
+  for (let i = 0; i < events.length; i++) {
+    items.push(<EventItem key={'ev-' + i} row={events[i]} />)
+  }
 
   return (
     <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
@@ -109,19 +125,7 @@ export default function TimelinePage(props) {
             {events.length === 0 ? (
               <p className="pt-muted">No indexed events returned from the timeline mirror yet.</p>
             ) : (
-              <ul className="pt-event-list">
-                {events.map((row, idx) => {
-                  const title = eventTitle(row)
-                  const meta = eventMeta(row)
-                  const key = row && row.id ? row.id : 'ev-' + idx
-                  return (
-                    <li key={key} className="pt-event-item">
-                      <span className="pt-event-title">{title}</span>
-                      {meta.length > 0 ? <span className="pt-muted pt-event-meta">{meta}</span> : null}
-                    </li>
-                  )
-                })}
-              </ul>
+              <ul className="pt-event-list">{items}</ul>
             )}
           </section>
         </div>
