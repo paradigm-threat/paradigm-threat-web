@@ -1,0 +1,312 @@
+themes:
+  light:
+    variables:
+      bg: "#f8fafc"
+      foreground: "#0f172a"
+      card: "#ffffff"
+      muted: "#64748b"
+      primary: "#2563eb"
+      primaryFg: "#f8fafc"
+      secondary: "#f1f5f9"
+      secondaryFg: "#1e293b"
+      border: "#e2e8f0"
+      badgeActive: "#22c55e"
+      badgePublished: "#3b82f6"
+      badgePlanned: "#eab308"
+    breakpoints:
+      sm: "640px"
+      md: "768px"
+      lg: "1024px"
+    selectors:
+      body:
+        backgroundColor: "var(bg)"
+        color: "var(foreground)"
+        fontFamily: "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+        lineHeight: "1.5"
+        margin: 0
+      ".ct-page":
+        backgroundColor: "var(bg)"
+        color: "var(foreground)"
+        minHeight: "100vh"
+      ".ct-container":
+        maxWidth: "64rem"
+        marginLeft: "auto"
+        marginRight: "auto"
+        padding: "4rem 1rem"
+        width: "100%"
+        boxSizing: "border-box"
+      ".ct-header":
+        marginBottom: "5rem"
+      ".ct-header-top":
+        display: "flex"
+        flexDirection: "column"
+        flexWrap: "wrap"
+        alignItems: "center"
+        justifyContent: "space-between"
+        gap: "1.5rem"
+        marginBottom: "1.5rem"
+      ".ct-header-top-row":
+        flexDirection: "row"
+        alignItems: "flex-end"
+      ".ct-identity":
+        display: "flex"
+        flexDirection: "row"
+        alignItems: "center"
+        justifyContent: "center"
+        gap: "1.5rem"
+        textAlign: "center"
+      ".ct-identity-text":
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.5rem"
+        textAlign: "center"
+      ".ct-identity-text-left":
+        textAlign: "left"
+      ".ct-name":
+        fontSize: "clamp(3rem, 6vw, 3.75rem)"
+        fontWeight: "800"
+        letterSpacing: "-0.04em"
+        margin: 0
+        lineHeight: "1"
+      ".ct-title":
+        fontSize: "clamp(1.25rem, 3vw, 1.5rem)"
+        fontWeight: "500"
+        margin: 0
+      ".ct-actions":
+        display: "flex"
+        flexWrap: "wrap"
+        alignItems: "center"
+        justifyContent: "center"
+        gap: "0.75rem"
+      ".ct-print-actions":
+        display: "flex"
+        flexWrap: "wrap"
+        alignItems: "center"
+        gap: "0.5rem"
+      ".ct-icon-btn":
+        display: "inline-flex"
+        alignItems: "center"
+        justifyContent: "center"
+        width: "2.625rem"
+        height: "2.625rem"
+        padding: 0
+        boxSizing: "border-box"
+        borderRadius: "9999px"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+        cursor: "pointer"
+      ".ct-icon-btn-placeholder":
+        width: "2.5rem"
+        height: "2.5rem"
+        borderRadius: "9999px"
+        backgroundColor: "var(secondary)"
+      ".ct-action-btn":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.625rem 1rem"
+        boxSizing: "border-box"
+        borderRadius: "9999px"
+        fontSize: "0.875rem"
+        fontWeight: "600"
+        fontFamily: "inherit"
+        lineHeight: "1.25rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        textDecoration: "none"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+        cursor: "pointer"
+        boxShadow: "0 1px 2px rgba(15, 23, 42, 0.08)"
+      ".ct-bio":
+        fontSize: "1.125rem"
+        lineHeight: "1.625"
+        margin: "0 auto"
+        textAlign: "center"
+      ".ct-bio-left":
+        textAlign: "left"
+        marginLeft: 0
+        marginRight: 0
+      ".ct-contacts":
+        display: "flex"
+        flexWrap: "wrap"
+        justifyContent: "center"
+        gap: "1rem"
+        marginTop: "1.5rem"
+      ".ct-contacts-left":
+        justifyContent: "flex-start"
+      ".ct-chip":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.375rem 0.75rem"
+        boxSizing: "border-box"
+        borderRadius: "9999px"
+        fontSize: "0.875rem"
+        fontWeight: "500"
+        lineHeight: "1.25rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        textDecoration: "none"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+      ".ct-muted":
+        color: "var(muted)"
+      ".ct-card":
+        backgroundColor: "var(card)"
+        color: "var(foreground)"
+        borderColor: "var(border)"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderRadius: "0.5rem"
+        padding: "1.5rem"
+        boxShadow: "0 1px 2px rgba(15, 23, 42, 0.06)"
+        display: "flex"
+        flexDirection: "column"
+        boxSizing: "border-box"
+      ".ct-project-card":
+        height: "100%"
+      ".ct-card-head":
+        display: "flex"
+        justifyContent: "space-between"
+        alignItems: "flex-start"
+        gap: "0.75rem"
+        marginBottom: "0.5rem"
+      ".ct-card-title":
+        fontSize: "1.25rem"
+        fontWeight: "700"
+        lineHeight: "1.75rem"
+        margin: 0
+      ".ct-card-links":
+        display: "flex"
+        flexWrap: "wrap"
+        gap: "1rem"
+        marginTop: "auto"
+      ".ct-primary":
+        backgroundColor: "var(primary)"
+        color: "var(primaryFg)"
+        borderColor: "var(primary)"
+        borderWidth: 0
+        boxShadow: "0 4px 6px rgba(37, 99, 235, 0.25)"
+      ".ct-secondary":
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+      ".ct-border":
+        borderColor: "var(border)"
+      ".ct-link":
+        color: "var(foreground)"
+        textDecoration: "none"
+        fontSize: "0.875rem"
+        lineHeight: "1.25rem"
+      ".ct-link-row":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.25rem"
+      ".ct-lib-card":
+        padding: "1rem"
+        gap: "0.5rem"
+        minHeight: "8.375rem"
+      ".ct-lib-name":
+        display: "flex"
+        alignItems: "center"
+        gap: "0.75rem"
+      ".ct-lib-icon":
+        color: "var(primary)"
+        display: "inline-flex"
+      ".ct-lib-mono":
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+        fontWeight: "700"
+        fontSize: "1.125rem"
+      ".ct-icon-link":
+        display: "inline-flex"
+        alignItems: "center"
+        justifyContent: "center"
+        padding: "0.5rem"
+        borderRadius: "9999px"
+        color: "var(foreground)"
+        textDecoration: "none"
+      ".ct-badge":
+        fontSize: "0.75rem"
+        fontWeight: "600"
+        borderRadius: "9999px"
+        padding: "0.15rem 0.6rem"
+        textTransform: "lowercase"
+        whiteSpace: "nowrap"
+      ".ct-badge-active":
+        backgroundColor: "var(badgeActive)"
+        color: "#052e16"
+      ".ct-badge-published":
+        backgroundColor: "var(badgePublished)"
+        color: "#eff6ff"
+      ".ct-badge-planned":
+        backgroundColor: "var(badgePlanned)"
+        color: "#422006"
+      ".ct-section":
+        marginBottom: "3rem"
+      ".ct-section-title":
+        fontSize: "1.875rem"
+        fontWeight: "700"
+        lineHeight: "2.25rem"
+        marginBottom: "1.5rem"
+        paddingBottom: "0.5rem"
+        borderBottomWidth: 1
+        borderBottomStyle: "solid"
+        borderBottomColor: "var(border)"
+      ".ct-projects":
+        display: "grid"
+        gridTemplateColumns: "1fr"
+        gap: "1.5rem"
+      ".ct-projects-md":
+        gridTemplateColumns: "1fr 1fr"
+      ".ct-libraries":
+        display: "grid"
+        gridTemplateColumns: "1fr"
+        gap: "1rem"
+      ".ct-libraries-md":
+        gridTemplateColumns: "1fr 1fr"
+      ".ct-lib-row":
+        display: "flex"
+        alignItems: "center"
+        justifyContent: "space-between"
+        gap: "0.75rem"
+      ".ct-lib-links":
+        display: "flex"
+        gap: "0.5rem"
+      ".ct-resume-grid":
+        display: "grid"
+        gridTemplateColumns: "1fr"
+        gap: "2rem"
+        fontSize: "0.875rem"
+      ".ct-resume-md":
+        gridTemplateColumns: "2fr 1fr"
+      ".ct-footer":
+        marginTop: "5rem"
+        paddingTop: "2rem"
+        borderTopWidth: 1
+        borderTopStyle: "solid"
+        borderTopColor: "var(border)"
+        textAlign: "center"
+        fontSize: "0.875rem"
+      "h1, h2, h3, h4, p, span, a, button, li, blockquote":
+        color: "inherit"
+  dark:
+    inherits: light
+    variables:
+      bg: "#020817"
+      foreground: "#f8fafc"
+      card: "#020817"
+      muted: "#94a3b8"
+      primary: "#3b82f6"
+      primaryFg: "#0b1220"
+      secondary: "#1e293b"
+      secondaryFg: "#f8fafc"
+      border: "#1e293b"
+      badgeActive: "#22c55e"
+      badgePublished: "#3b82f6"
+      badgePlanned: "#eab308"
+current_theme: light

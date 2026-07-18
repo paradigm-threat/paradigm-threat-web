@@ -1,0 +1,29 @@
+name: "Paradigm Threat Web"
+version: "0.1.0"
+description: "CleverScript park canary for thin IPFS-backed PT content"
+client:
+  hooks:
+    get:
+      path: hooks/client/get.jsx
+server:
+  hooks:
+    get:
+      path: hooks/server/get.cs
+  tls:
+    plugin: park
+git:
+  autoPush:
+    branches: ["main", "release"]
+    originList:
+      - "dfw1.relaygateway.net"
+      - "lon1.relaygateway.net"
+      - "hkg1.relaygateway.net"
+    debounceSeconds: 2
+  branchRules:
+    default:
+      requireSigned: false
+      allowedKeys: [".ssh/*"]
+    branches:
+      - name: release
+        rule:
+          allowUnsigned: true
