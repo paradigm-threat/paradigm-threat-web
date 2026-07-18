@@ -1,7 +1,8 @@
-/** Default relay origins for thin corpus repos (override via host preset when embedded). */
-export default function relayOrigins() {
-  return {
-    filesBaseUrl: 'https://paradigm-threat-files.dfw1.relaygateway.net',
-    timelineBaseUrl: 'https://paradigm-threat-timeline.dfw1.relaygateway.net',
-  }
+/** Default relay origins for thin corpus repos. */
+export function getFilesBaseUrl() {
+  return 'https://paradigm-threat-files.dfw1.relaygateway.net'
+}
+
+export function getTimelineBaseUrl() {
+  return 'https://paradigm-threat-timeline.dfw1.relaygateway.net'
 }

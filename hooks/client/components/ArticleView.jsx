@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { MarkdownRenderer } from '@clevertree/markdown'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
-import relayOrigins from 'hooks/client/config.jsx'
+import { getFilesBaseUrl } from 'hooks/client/config.jsx'
 import manifest from '@hooks'
 
 function str(v) {
@@ -88,8 +88,7 @@ function filesOrigin() {
   if (manifest.relayFilesBaseUrl && typeof manifest.relayFilesBaseUrl === 'string') {
     return manifest.relayFilesBaseUrl
   }
-  const o = relayOrigins()
-  return o.filesBaseUrl
+  return getFilesBaseUrl()
 }
 
 export default function ArticleView(props) {

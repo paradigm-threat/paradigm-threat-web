@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
 import { IconSearch } from 'hooks/client/components/Icons.jsx'
-import relayOrigins from 'hooks/client/config.jsx'
+import { getFilesBaseUrl } from 'hooks/client/config.jsx'
 
 function str(v) {
   if (v === null) return ''
