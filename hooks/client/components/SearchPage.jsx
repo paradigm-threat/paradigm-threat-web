@@ -29,8 +29,7 @@ function rowPath(row) {
 }
 
 function runSearch(query) {
-  const origins = relayOrigins()
-  let base = origins.filesBaseUrl
+  let base = getFilesBaseUrl()
   while (base.length > 0 && base.charAt(base.length - 1) === '/') {
     base = base.slice(0, base.length - 1)
   }

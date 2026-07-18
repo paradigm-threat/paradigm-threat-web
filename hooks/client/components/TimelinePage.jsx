@@ -30,8 +30,7 @@ function eventMeta(row) {
 }
 
 function loadTimelineIntro() {
-  const origins = relayOrigins()
-  let base = origins.timelineBaseUrl
+  let base = getTimelineBaseUrl()
   while (base.length > 0 && base.charAt(base.length - 1) === '/') {
     base = base.slice(0, base.length - 1)
   }
@@ -65,8 +64,7 @@ function flattenEvents(rows) {
 }
 
 function loadTimelineEvents() {
-  const origins = relayOrigins()
-  let base = origins.timelineBaseUrl
+  let base = getTimelineBaseUrl()
   while (base.length > 0 && base.charAt(base.length - 1) === '/') {
     base = base.slice(0, base.length - 1)
   }
