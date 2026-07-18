@@ -1,9 +1,9 @@
 /**
- * Paradigm Threat web shell — client GET hook with path-based routing.
- * CleverScript: no global String() — coerce with '' + value or typeof checks.
- * Do not reference undeclared host globals (e.g. navigate) — that breaks SSR IR.
+ * Paradigm Threat web shell — path-based pages (full navigation via href).
+ * CleverScript SSR cannot pass local function identifiers into imported components
+ * (`onNavigate={routeTo}` → Undefined variable). Use plain links + per-page state.
  */
-import React, { useState } from 'react'
+import React from 'react'
 import StyleContext from '@clevertree/style'
 import manifest from '@hooks'
 import Home from 'hooks/client/components/Home.jsx'
@@ -45,29 +45,16 @@ function articleFilePath(route) {
 }
 
 export default function ParadigmThreatWebGet() {
-  const routeState = useState(initialRoute())
-  const route = routeState[0]
-  const setRoute = routeState[1]
-
-  function routeTo(to) {
-    setRoute(normalizeRoute(to))
-  }
-
+  const route = initialRoute()
   let page = null
   if (route === '/' || route === '/index.md') {
-    page = <Home currentPath={route} onNavigate={routeTo} />
+    page = <Home currentPath="/" />
   } else if (route === '/search') {
-    page = <SearchPage currentPath={route} onNavigate={routeTo} />
+    page = <SearchPage currentPath="/search" />
   } else if (route === '/timeline') {
-    page = <TimelinePage currentPath={route} onNavigate={routeTo} />
+    page = <TimelinePage currentPath="/timeline" />
   } else {
-    page = (
-      <ArticleView
-        currentPath={route}
-        filePath={articleFilePath(route)}
-        onNavigate={routeTo}
-      />
-    )
+    page = <ArticleView currentPath={route} filePath={articleFilePath(route)} />
   }
 
   return (

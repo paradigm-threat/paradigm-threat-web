@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MarkdownRenderer } from '@clevertree/markdown'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
 import { filesBaseUrl } from 'hooks/client/config.jsx'
@@ -92,25 +92,33 @@ function filesOrigin() {
 }
 
 export default function ArticleView(props) {
-  const routePath = props.filePath || 'README.md'
-  const onNavigate = props.onNavigate
-  const currentPath = props.currentPath || '/README.md'
+  const initial = normalizeRelPath(props.filePath || 'README.md')
+  const pathState = useState(initial)
+  const routePath = pathState[0]
+  const setRoutePath = pathState[1]
+  const currentPath = props.currentPath || '/' + initial
   const slash = manifest.relayPathSlash ? manifest.relayPathSlash : '/'
 
   function navigateFile(to) {
-    const rel = normalizeRelPath(to)
-    const route = '/' + rel
-    if (onNavigate) onNavigate(route)
+    setRoutePath(normalizeRelPath(to))
   }
 
   function onMdLinkClick(href) {
     const h = str(href)
     if (h.charAt(0) === '/' && h.indexOf('://') < 0) {
-      if (onNavigate) onNavigate(h)
+      navigateFile(h)
       return
     }
     const resolved = resolveMdHref(href, routePath, slash, filesOrigin())
     navigateFile(resolved)
+  }
+
+  function onUpClick() {
+    navigateFile(parentDir(routePath, slash))
+  }
+
+  function onHomeClick() {
+    navigateFile('README.md')
   }
 
   let pathPart = normalizeRelPath(routePath)
@@ -136,16 +144,8 @@ export default function ArticleView(props) {
 
   const body = errMsg ? '# Error\n\n' + errMsg : markdownContent
 
-  function onUpClick() {
-    navigateFile(parentDir(routePath, slash))
-  }
-
-  function onHomeClick() {
-    navigateFile('README.md')
-  }
-
   return (
-    <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
+    <SiteChrome currentPath={currentPath}>
       <main className="pt-page pt-article-page">
         <div className="pt-article-toolbar">
           <span className="pt-muted">File:</span>

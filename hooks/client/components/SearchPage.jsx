@@ -61,15 +61,11 @@ function runSearch(query) {
 
 function ResultItem(props) {
   const row = props.row
-  const onNavigate = props.onNavigate
   const path = rowPath(row)
   const href = path.length > 0 ? '/' + path : '/README.md'
-  function onClick() {
-    if (onNavigate) onNavigate(href)
-  }
   return (
     <li className="pt-result-item">
-      <a href={href} className="pt-result-link" onClick={onClick}>
+      <a href={href} className="pt-result-link">
         <span className="pt-result-title">{rowTitle(row)}</span>
         {path.length > 0 ? <span className="pt-muted pt-result-path">{path}</span> : null}
       </a>
@@ -79,7 +75,6 @@ function ResultItem(props) {
 
 export default function SearchPage(props) {
   const currentPath = props.currentPath || '/search'
-  const onNavigate = props.onNavigate
   const qState = useState('')
   const query = qState[0]
   const setQuery = qState[1]
@@ -110,12 +105,12 @@ export default function SearchPage(props) {
   const items = []
   if (rows && rows.length > 0) {
     for (let i = 0; i < rows.length; i++) {
-      items.push(<ResultItem key={'r-' + i} row={rows[i]} onNavigate={onNavigate} />)
+      items.push(<ResultItem key={'r-' + i} row={rows[i]} />)
     }
   }
 
   return (
-    <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
+    <SiteChrome currentPath={currentPath}>
       <main className="pt-page" id="pt-search">
         <div className="pt-container">
           <header className="pt-header">

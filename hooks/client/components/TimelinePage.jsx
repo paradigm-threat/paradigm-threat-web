@@ -102,7 +102,6 @@ function EventItem(props) {
 
 export default function TimelinePage(props) {
   const currentPath = props.currentPath || '/timeline'
-  const onNavigate = props.onNavigate
   const intro = loadTimelineIntro()
   const events = loadTimelineEvents()
   const items = []
@@ -111,7 +110,7 @@ export default function TimelinePage(props) {
   }
 
   return (
-    <SiteChrome currentPath={currentPath} onNavigate={onNavigate}>
+    <SiteChrome currentPath={currentPath}>
       <main className="pt-page" id="pt-timeline">
         <div className="pt-container">
           <header className="pt-header">
