@@ -70,7 +70,12 @@ function ResultItem(props) {
 }
 
 export default function SearchPage(props) {
-  const currentPath = props.currentPath || '/search'
+  let currentPath = '/search'
+  try {
+    if (props.currentPath) currentPath = props.currentPath
+  } catch (e) {
+    currentPath = '/search'
+  }
   const qState = useState('')
   const query = qState[0]
   const setQuery = qState[1]

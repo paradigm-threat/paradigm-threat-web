@@ -1,8 +1,9 @@
 import React from 'react'
 import Nav from 'hooks/client/components/Nav.jsx'
+import { propStr } from 'hooks/client/propOr.jsx'
 
 export default function SiteChrome(props) {
-  const currentPath = props.currentPath || '/'
+  const currentPath = propStr(props, 'currentPath', '/')
   const children = props.children
   return (
     <div className="pt-shell">

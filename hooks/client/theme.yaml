@@ -596,6 +596,51 @@ themes:
         borderTopColor: "var(border)"
         textAlign: "center"
         fontSize: "0.875rem"
+      ".relay-image":
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.5rem"
+        padding: "1rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        borderRadius: "0.5rem"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+        minHeight: "6rem"
+        justifyContent: "center"
+        boxSizing: "border-box"
+      ".relay-image-msg":
+        fontSize: "0.875rem"
+        fontWeight: "600"
+      ".relay-image-hint":
+        fontSize: "0.75rem"
+        color: "var(muted)"
+      ".relay-image-cid":
+        fontSize: "0.7rem"
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+        color: "var(muted)"
+        wordBreak: "break-all"
+      ".relay-image-bar":
+        height: "0.35rem"
+        borderRadius: "9999px"
+        backgroundColor: "var(border)"
+        overflow: "hidden"
+      ".relay-image-bar-fill":
+        height: "100%"
+        backgroundColor: "var(primary)"
+      ".relay-image-retry":
+        alignSelf: "flex-start"
+        marginTop: "0.25rem"
+        padding: "0.35rem 0.75rem"
+        borderRadius: "0.375rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(card)"
+        color: "var(foreground)"
+        cursor: "pointer"
+        fontSize: "0.875rem"
       ".pt-link":
         color: "var(primary)"
         textDecoration: "none"

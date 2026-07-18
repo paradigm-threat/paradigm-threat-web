@@ -92,11 +92,22 @@ function filesOrigin() {
 }
 
 export default function ArticleView(props) {
-  const initial = normalizeRelPath(props.filePath || 'README.md')
+  let filePathProp = 'README.md'
+  try {
+    if (props.filePath) filePathProp = props.filePath
+  } catch (e) {
+    filePathProp = 'README.md'
+  }
+  const initial = normalizeRelPath(filePathProp)
   const pathState = useState(initial)
   const routePath = pathState[0]
   const setRoutePath = pathState[1]
-  const currentPath = props.currentPath || '/' + initial
+  let currentPath = '/' + initial
+  try {
+    if (props.currentPath) currentPath = props.currentPath
+  } catch (e) {
+    currentPath = '/' + initial
+  }
   const slash = manifest.relayPathSlash ? manifest.relayPathSlash : '/'
 
   function navigateFile(to) {

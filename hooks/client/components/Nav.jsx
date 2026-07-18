@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import ThemeToggle from 'hooks/client/components/ThemeToggle.jsx'
 import { IconBook, IconClock, IconClose, IconHome, IconMenu, IconSearch } from 'hooks/client/components/Icons.jsx'
+import { propOr, propStr } from 'hooks/client/propOr.jsx'
 
 function NavLink(props) {
-  const href = props.href
-  const label = props.label
-  const icon = props.icon
-  const active = props.active
+  const href = propStr(props, 'href', '#')
+  const label = propStr(props, 'label', '')
+  const icon = propOr(props, 'icon', null)
+  const active = propOr(props, 'active', false)
   const className = active ? 'pt-nav-link pt-nav-link-active' : 'pt-nav-link'
   return (
     <a href={href} className={className}>
@@ -17,7 +18,7 @@ function NavLink(props) {
 }
 
 export default function Nav(props) {
-  const currentPath = props.currentPath || '/'
+  const currentPath = propStr(props, 'currentPath', '/')
   const menu = useState(false)
   const isOpen = menu[0]
   const setOpen = menu[1]

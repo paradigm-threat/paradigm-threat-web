@@ -48,7 +48,7 @@ export default function ParadigmThreatWebGet() {
   const route = initialRoute()
   let page = null
   if (route === '/' || route === '/index.md') {
-    page = <Home currentPath="/" />
+    page = <Home />
   } else if (route === '/search') {
     page = <SearchPage currentPath="/search" />
   } else if (route === '/timeline') {

@@ -14,20 +14,17 @@ function Chip(props) {
   )
 }
 
-export default function Home(props) {
-  const title = props.title || 'Paradigm Threat'
-  const blurb =
-    props.blurb ||
-    'Thin-repo canary — CleverScript shell over IPFS-backed files and timeline corpora on Relay.'
-  const currentPath = props.currentPath || '/'
-
+/** Home — no optional props (CleverScript throws on missing keys). */
+export default function Home() {
   return (
-    <SiteChrome currentPath={currentPath}>
+    <SiteChrome currentPath="/">
       <main className="pt-page" id="pt-home">
         <div className="pt-container">
           <header className="pt-header">
-            <h1 className="pt-title">{title}</h1>
-            <p className="pt-muted pt-lead">{blurb}</p>
+            <h1 className="pt-title">Paradigm Threat</h1>
+            <p className="pt-muted pt-lead">
+              Thin-repo canary — CleverScript shell over IPFS-backed files and timeline corpora on Relay.
+            </p>
             <nav className="pt-nav-chips">
               <Chip href="/README.md" label="Files corpus" icon={<IconBook />} />
               <Chip href="/search" label="Search" icon={<IconSearch />} />

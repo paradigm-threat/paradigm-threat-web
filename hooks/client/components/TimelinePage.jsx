@@ -97,7 +97,12 @@ function EventItem(props) {
 }
 
 export default function TimelinePage(props) {
-  const currentPath = props.currentPath || '/timeline'
+  let currentPath = '/timeline'
+  try {
+    if (props.currentPath) currentPath = props.currentPath
+  } catch (e) {
+    currentPath = '/timeline'
+  }
   const intro = loadTimelineIntro()
   const events = loadTimelineEvents()
   const items = []
