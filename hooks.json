@@ -1,7 +1,14 @@
 {
   "hooks": [
-    { "path": "hooks/client/components/Home.jsx", "name": "Home" },
+    { "path": "hooks/client/config.jsx", "name": "config" },
     { "path": "hooks/client/components/Icons.jsx", "name": "Icons" },
+    { "path": "hooks/client/components/ThemeToggle.jsx", "name": "ThemeToggle" },
+    { "path": "hooks/client/components/Nav.jsx", "name": "Nav" },
+    { "path": "hooks/client/components/SiteChrome.jsx", "name": "SiteChrome" },
+    { "path": "hooks/client/components/Home.jsx", "name": "Home" },
+    { "path": "hooks/client/components/ArticleView.jsx", "name": "ArticleView" },
+    { "path": "hooks/client/components/SearchPage.jsx", "name": "SearchPage" },
+    { "path": "hooks/client/components/TimelinePage.jsx", "name": "TimelinePage" },
     { "path": "hooks/client/get.jsx", "name": "client get" }
   ],
   "relayPathSlash": "/"

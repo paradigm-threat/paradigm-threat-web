@@ -1,6 +1,5 @@
 import { markdownHtmlFromGetContext } from '@relay/md';
 import { ssrClientHookFromGetContext } from '@relay/ssr';
-import { pinnedPrefix } from '@relay/web-assets';
 
 function wantsSiteShell(ctx) {
   try { if (ctx.embedMarkdownRequest === true) return true; } catch (e) {}

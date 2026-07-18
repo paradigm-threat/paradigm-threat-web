@@ -294,6 +294,319 @@ themes:
         fontSize: "0.875rem"
       "h1, h2, h3, h4, p, span, a, button, li, blockquote":
         color: "inherit"
+      ".pt-shell":
+        backgroundColor: "var(bg)"
+        color: "var(foreground)"
+        minHeight: "100vh"
+        display: "flex"
+        flexDirection: "column"
+      ".pt-shell-body":
+        flex: 1
+        display: "flex"
+        flexDirection: "column"
+        minHeight: 0
+      ".pt-site-nav":
+        position: "sticky"
+        top: 0
+        zIndex: 100
+        width: "100%"
+        borderBottomWidth: 1
+        borderBottomStyle: "solid"
+        borderBottomColor: "var(border)"
+        backgroundColor: "var(secondary)"
+      ".pt-nav-inner":
+        maxWidth: "80rem"
+        marginLeft: "auto"
+        marginRight: "auto"
+        padding: "0 1rem"
+        display: "flex"
+        alignItems: "center"
+        justifyContent: "space-between"
+        gap: "1rem"
+        minHeight: "4rem"
+        boxSizing: "border-box"
+      ".pt-nav-brand-row":
+        display: "flex"
+        alignItems: "center"
+        gap: "1.5rem"
+        minWidth: 0
+        flex: 1
+      ".pt-brand":
+        fontSize: "1.125rem"
+        fontWeight: "700"
+        letterSpacing: "-0.02em"
+        textDecoration: "none"
+        color: "var(foreground)"
+        whiteSpace: "nowrap"
+      ".pt-nav-desktop":
+        display: "none"
+        alignItems: "center"
+        gap: "0.25rem"
+      ".pt-nav-link":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.5rem 0.875rem"
+        borderRadius: "0.5rem"
+        fontSize: "0.875rem"
+        fontWeight: "500"
+        textDecoration: "none"
+        color: "var(muted)"
+      ".pt-nav-link-active":
+        backgroundColor: "var(card)"
+        color: "var(foreground)"
+      ".pt-nav-actions":
+        display: "flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        flexShrink: 0
+      ".pt-nav-actions-desktop":
+        display: "none"
+      ".pt-nav-menu-btn":
+        display: "inline-flex"
+      ".pt-nav-mobile":
+        borderTopWidth: 1
+        borderTopStyle: "solid"
+        borderTopColor: "var(border)"
+        padding: "1rem"
+        backgroundColor: "var(bg)"
+      ".pt-nav-mobile-tools":
+        display: "flex"
+        alignItems: "center"
+        justifyContent: "space-between"
+        gap: "0.75rem"
+        paddingBottom: "1rem"
+        marginBottom: "1rem"
+        borderBottomWidth: 1
+        borderBottomStyle: "solid"
+        borderBottomColor: "var(border)"
+      ".pt-nav-mobile-label":
+        fontSize: "0.75rem"
+        fontWeight: "700"
+        textTransform: "uppercase"
+        letterSpacing: "0.05em"
+        color: "var(muted)"
+      ".pt-nav-mobile-links":
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.5rem"
+      ".pt-page":
+        backgroundColor: "var(bg)"
+        color: "var(foreground)"
+        flex: 1
+        minHeight: 0
+      ".pt-container":
+        maxWidth: "64rem"
+        marginLeft: "auto"
+        marginRight: "auto"
+        padding: "2rem 1rem 3rem"
+        width: "100%"
+        boxSizing: "border-box"
+      ".pt-header":
+        marginBottom: "2rem"
+      ".pt-title":
+        fontSize: "clamp(1.75rem, 4vw, 2.5rem)"
+        fontWeight: "800"
+        letterSpacing: "-0.03em"
+        margin: "0 0 0.75rem"
+        lineHeight: "1.1"
+      ".pt-lead":
+        fontSize: "1.125rem"
+        lineHeight: "1.6"
+        margin: "0 0 1.5rem"
+        maxWidth: "42rem"
+      ".pt-muted":
+        color: "var(muted)"
+      ".pt-nav-chips":
+        display: "flex"
+        flexWrap: "wrap"
+        gap: "0.75rem"
+      ".pt-chip":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.5rem 0.875rem"
+        boxSizing: "border-box"
+        borderRadius: "9999px"
+        fontSize: "0.875rem"
+        fontWeight: "500"
+        lineHeight: "1.25rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        textDecoration: "none"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+      ".pt-icon-btn":
+        display: "inline-flex"
+        alignItems: "center"
+        justifyContent: "center"
+        width: "2.625rem"
+        height: "2.625rem"
+        padding: 0
+        boxSizing: "border-box"
+        borderRadius: "9999px"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+        cursor: "pointer"
+      ".pt-btn":
+        display: "inline-flex"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.5rem 0.875rem"
+        boxSizing: "border-box"
+        borderRadius: "0.5rem"
+        fontSize: "0.875rem"
+        fontWeight: "600"
+        fontFamily: "inherit"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(secondary)"
+        color: "var(secondaryFg)"
+        cursor: "pointer"
+      ".pt-btn-primary":
+        backgroundColor: "var(primary)"
+        color: "var(primaryFg)"
+        borderColor: "var(primary)"
+      ".pt-input":
+        flex: 1
+        minWidth: 0
+        padding: "0.625rem 0.875rem"
+        fontSize: "1rem"
+        fontFamily: "inherit"
+        borderRadius: "0.5rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(card)"
+        color: "var(foreground)"
+        boxSizing: "border-box"
+      ".pt-search-form":
+        display: "flex"
+        flexWrap: "wrap"
+        gap: "0.75rem"
+        marginBottom: "1.5rem"
+      ".pt-error":
+        color: "#dc2626"
+        margin: "0 0 1rem"
+      ".pt-result-list":
+        listStyle: "none"
+        margin: 0
+        padding: 0
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.75rem"
+      ".pt-result-item":
+        margin: 0
+      ".pt-result-link":
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.25rem"
+        padding: "1rem"
+        borderRadius: "0.5rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(card)"
+        textDecoration: "none"
+        color: "inherit"
+      ".pt-result-title":
+        fontWeight: "600"
+      ".pt-result-path":
+        fontSize: "0.8125rem"
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+      ".pt-card":
+        backgroundColor: "var(card)"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        borderRadius: "0.5rem"
+        padding: "1.5rem"
+        marginBottom: "2rem"
+      ".pt-section":
+        marginBottom: "2rem"
+      ".pt-section-title":
+        fontSize: "1.25rem"
+        fontWeight: "700"
+        margin: "0 0 1rem"
+        paddingBottom: "0.5rem"
+        borderBottomWidth: 1
+        borderBottomStyle: "solid"
+        borderBottomColor: "var(border)"
+      ".pt-event-list":
+        listStyle: "none"
+        margin: 0
+        padding: 0
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.5rem"
+      ".pt-event-item":
+        display: "flex"
+        flexDirection: "column"
+        gap: "0.125rem"
+        padding: "0.75rem 1rem"
+        borderRadius: "0.5rem"
+        borderWidth: 1
+        borderStyle: "solid"
+        borderColor: "var(border)"
+        backgroundColor: "var(card)"
+      ".pt-event-title":
+        fontWeight: "600"
+      ".pt-event-meta":
+        fontSize: "0.8125rem"
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+      ".pt-article-page":
+        display: "flex"
+        flexDirection: "column"
+        minHeight: 0
+      ".pt-article-toolbar":
+        display: "flex"
+        flexWrap: "wrap"
+        alignItems: "center"
+        gap: "0.5rem"
+        padding: "0.75rem 1rem"
+        borderBottomWidth: 1
+        borderBottomStyle: "solid"
+        borderBottomColor: "var(border)"
+        fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace"
+        fontSize: "0.875rem"
+        flexShrink: 0
+      ".pt-article-path":
+        flex: 1
+        minWidth: 0
+        wordBreak: "break-all"
+      ".pt-article-body":
+        flex: 1
+        overflowY: "auto"
+        padding: "1rem"
+        maxWidth: "64rem"
+        marginLeft: "auto"
+        marginRight: "auto"
+        width: "100%"
+        boxSizing: "border-box"
+      ".pt-footer":
+        marginTop: "auto"
+        padding: "1.5rem 1rem"
+        borderTopWidth: 1
+        borderTopStyle: "solid"
+        borderTopColor: "var(border)"
+        textAlign: "center"
+        fontSize: "0.875rem"
+      ".pt-link":
+        color: "var(primary)"
+        textDecoration: "none"
+      ".pt-nav-desktop-md":
+        display: "flex"
+      ".pt-nav-actions-desktop-md":
+        display: "flex"
+      ".pt-nav-menu-btn-md":
+        display: "none"
+      ".pt-nav-mobile-md":
+        display: "none"
   dark:
     inherits: light
     variables:
