@@ -1,7 +1,7 @@
 import React from 'react'
 import { MarkdownRenderer } from '@clevertree/markdown'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
-import { timelineBaseUrl } from 'hooks/client/config.jsx'
+import relayOrigins from 'hooks/client/config.jsx'
 
 function str(v) {
   if (v === null) return ''
@@ -30,7 +30,8 @@ function eventMeta(row) {
 }
 
 function loadTimelineIntro() {
-  let base = timelineBaseUrl
+  const origins = relayOrigins()
+  let base = origins.timelineBaseUrl
   while (base.length > 0 && base.charAt(base.length - 1) === '/') {
     base = base.slice(0, base.length - 1)
   }

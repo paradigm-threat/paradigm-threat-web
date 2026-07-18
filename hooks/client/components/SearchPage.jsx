@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import SiteChrome from 'hooks/client/components/SiteChrome.jsx'
 import { IconSearch } from 'hooks/client/components/Icons.jsx'
-import { filesBaseUrl } from 'hooks/client/config.jsx'
+import relayOrigins from 'hooks/client/config.jsx'
 
 function str(v) {
   if (v === null) return ''
@@ -29,7 +29,8 @@ function rowPath(row) {
 }
 
 function runSearch(query) {
-  let base = filesBaseUrl
+  const origins = relayOrigins()
+  let base = origins.filesBaseUrl
   while (base.length > 0 && base.charAt(base.length - 1) === '/') {
     base = base.slice(0, base.length - 1)
   }
