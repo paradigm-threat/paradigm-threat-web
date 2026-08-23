@@ -55,20 +55,26 @@ function flattenEvents(rows) {
   if (!rows || rows.length === 0) return out
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i]
-    if (row.introArticles && row.introArticles.length > 0) {
-      for (let j = 0; j < row.introArticles.length; j++) {
-        out.push(row.introArticles[j])
+    try {
+      if (row.introArticles && row.introArticles.length > 0) {
+        for (let j = 0; j < row.introArticles.length; j++) {
+          out.push(row.introArticles[j])
+        }
       }
-    }
-    if (row.title && row.id && str(row.id).indexOf('__') !== 0) {
-      out.push(row)
-    }
-    if (row.children && row.children.length > 0) {
-      for (let k = 0; k < row.children.length; k++) {
-        out.push(row.children[k])
-        if (out.length >= 40) break
+    } catch (e) {}
+    try {
+      if (row.title && row.id && str(row.id).indexOf('__') !== 0) {
+        out.push(row)
       }
-    }
+    } catch (e) {}
+    try {
+      if (row.children && row.children.length > 0) {
+        for (let k = 0; k < row.children.length; k++) {
+          out.push(row.children[k])
+          if (out.length >= 40) break
+        }
+      }
+    } catch (e) {}
     if (out.length >= 40) break
   }
   return out.slice(0, 40)
