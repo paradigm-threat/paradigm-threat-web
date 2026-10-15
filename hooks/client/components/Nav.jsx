@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ThemeToggle from 'hooks/client/components/ThemeToggle.jsx'
-import { IconBook, IconClock, IconClose, IconHome, IconMenu, IconSearch } from 'hooks/client/components/Icons.jsx'
+import { IconBook, IconClock, IconClose, IconFilm, IconHome, IconMenu, IconSearch } from 'hooks/client/components/Icons.jsx'
 import { propOr, propStr } from 'hooks/client/propOr.jsx'
 
 function NavLink(props) {
@@ -42,6 +42,12 @@ export default function Nav(props) {
             <NavLink href="/search" label="Search" icon={<IconSearch />} active={isActive('/search')} />
             <NavLink href="/timeline" label="Timeline" icon={<IconClock />} active={isActive('/timeline')} />
             <NavLink href="/README.md" label="Files" icon={<IconBook />} active={isActive('/README.md')} />
+            <NavLink
+              href="https://flashbackrepository.org/"
+              label="Movies"
+              icon={<IconFilm />}
+              active={false}
+            />
           </nav>
         </div>
         <div className="pt-nav-actions">
@@ -71,6 +77,12 @@ export default function Nav(props) {
             <NavLink href="/search" label="Search" icon={<IconSearch />} active={isActive('/search')} />
             <NavLink href="/timeline" label="Timeline" icon={<IconClock />} active={isActive('/timeline')} />
             <NavLink href="/README.md" label="Files" icon={<IconBook />} active={isActive('/README.md')} />
+            <NavLink
+              href="https://flashbackrepository.org/"
+              label="Movies"
+              icon={<IconFilm />}
+              active={false}
+            />
           </nav>
         </div>
       ) : null}
